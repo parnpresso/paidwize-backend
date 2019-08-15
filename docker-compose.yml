@@ -1,0 +1,14 @@
+version: '3'
+services:
+  app:
+    build:
+      context: ./service-app
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./service-app:/app
+    command: bash -c "chmod +x entrypoints/local.sh && entrypoints/local.sh"
+
+  db:
+    image: postgres
